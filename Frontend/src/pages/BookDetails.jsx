@@ -36,7 +36,7 @@ export default function Bookdetails() {
         src={data.thumbnail}
         alt={data.title}
         className='w-[400px] h-[520px] object-fill rounded-2xl shadow-2xl hover:scale-[1.02] duration-500'
-      />
+      /> 
 
     </div>
 
