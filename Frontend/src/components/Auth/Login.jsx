@@ -18,7 +18,7 @@ export default function Login() {
     try {
       let res = await axios.post("http://localhost:5500/api/user/login", formdata)
 
-      console.log(res.data)
+      // console.log(res.data)
       localStorage.setItem("user", JSON.stringify(res.data.user))
 
       alert("Login Successfully")
