@@ -7,15 +7,7 @@ let app = express()
 
 app.use(express.json())
 // app.use(cors())
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://YOUR-VERCEL-URL.vercel.app"
-    ],
-    credentials: true,
-  })
-);
+
 
 
 //connect mongodb 
