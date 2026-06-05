@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export default function Login() {
 
+  const api = import.meta.env.VITE_API_URL;
+
   let navigate = useNavigate()
 
   // Handle Submit
@@ -16,7 +18,8 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      let res = await axios.post("http://localhost:5500/api/user/login", formdata)
+      // let res = await axios.post("http://localhost:5500/api/user/login", formdata)
+      let res = await axios.post(`${api}/api/user/login`, formdata)
 
       // console.log(res.data)
       localStorage.setItem("user", JSON.stringify(res.data.user))

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useNavigate } from 'react-router-dom'
 
 export default function Bookcard() {
+   const api = import.meta.env.VITE_API_URL;
 
   let navigate = useNavigate();
 
@@ -20,7 +21,7 @@ export default function Bookcard() {
 
       try {
 
-        let res = await axios.get("http://localhost:5500/api/book")
+        let res = await axios.get(`${api}/api/book`)
 
         setbooks(res.data)
 
@@ -74,7 +75,7 @@ export default function Bookcard() {
         if (category === "all") {
 
           let res = await axios.get(
-            "http://localhost:5500/api/book"
+            `${api}/api/book`
           )
 
           setbooks(res.data)
@@ -87,7 +88,7 @@ export default function Bookcard() {
 
         // Category Wise Data
         let res = await axios.get(
-          `http://localhost:5500/api/book/category/${category}`
+          `${api}/api/book/category/${category}`
         )
 
         setbooks(res.data)
@@ -130,7 +131,7 @@ export default function Bookcard() {
       if(title.trim() === ""){
 
         let res = await axios.get(
-          "http://localhost:5500/api/book"
+          `${api}/api/book`
         )
 
         setbooks(res.data)
@@ -141,7 +142,7 @@ export default function Bookcard() {
 
       // Search API
       let res = await axios.get(
-        `http://localhost:5500/api/book/search?title=${title}`
+        `${api}/api/book/search?title=${title}`
       )
 
       setbooks(res.data)

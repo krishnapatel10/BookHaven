@@ -6,13 +6,14 @@ import Navbar from '../components/Navbar.jsx'
 
 
 export default function Bookdetails() {
+   const api = import.meta.env.VITE_API_URL;
 
     let [data,setdata]=useState({})
     let {id} = useParams();
 
     useEffect(()=>{
         async function getdata() {
-            let res = await axios.get(`http://localhost:5500/api/book/${id}`)
+            let res = await axios.get(`${api}/api/book/${id}`)
             console.log(res.data);
             setdata(res.data);
 

@@ -4,27 +4,30 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
 
+    const api = import.meta.env.VITE_API_URL;
+
    let navigate = useNavigate()
 
    // Handle Submit
-   async function handlesubmit(e){
+   async function handlesubmit(e) {
 
       e.preventDefault()
 
       let formdata = {
 
-         name:e.target.name.value,
+         name: e.target.name.value,
 
-         email:e.target.email.value,
+         email: e.target.email.value,
 
-         password:e.target.password.value
+         password: e.target.password.value
 
       }
 
       try {
 
+        
          let res = await axios.post(
-            "http://localhost:5500/api/user/signup",
+            `${api}/api/user/signup`,
             formdata
          )
 
