@@ -4,6 +4,7 @@ let booksController = {
   async getallbook(req, res) {
     try {
       let data = await books.find();
+       console.log("Books Found:", data.length);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ message: "internal server error", error });

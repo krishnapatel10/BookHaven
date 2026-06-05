@@ -6,6 +6,7 @@ let router = Router()
 
 router.get("/",booksController.getallbook)
 router.get("/search",booksController.searchbook )
+router.get("/category/:category",booksController.categorybook)
 
 router.get("/:id",booksController.getbookbyid)
 router.post("/",booksController.createbooks)
@@ -15,6 +16,5 @@ router.delete("/:id",booksController.deletebook)
 // search router
 
 //categories router
-router.get("/category/:category",booksController.categorybook)
 
 export default router;
