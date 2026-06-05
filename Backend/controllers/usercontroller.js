@@ -30,9 +30,13 @@ let usercontroller = {
       });
       let newdata = await data.save();
       res.status(201).json(newdata);
-    } catch (error) {
-      res.status(500).json({ message: "internal server error", error });
-    }
+    }catch (error) {
+    console.log("Signup Error:", error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
   },
   async loginuser(req, res) {
     try {
