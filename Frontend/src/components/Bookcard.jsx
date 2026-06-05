@@ -130,9 +130,9 @@ export default function Bookcard() {
       // Empty Search
       if(title.trim() === ""){
 
-        let res = await axios.get(
-          `${api}/api/book`
-        )
+        let res = await axios.get(`${api}/api/book`)
+        console.log("API URL:", api);
+console.log("Books Data:", res.data);
 
         setbooks(res.data)
 
