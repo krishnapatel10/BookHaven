@@ -6,10 +6,10 @@ export default function connectdb() {
      mongoose.connect(process.env.MONGODB_URL).then(()=>{
         console.log("Connected to mongodb...");
     }).catch((error)=>{
-        console.log({message:message.error});
+        console.log(error.message);
     })
    } catch (error) {
-      console.log({message:message.error});
+      console.log(error.message);
    }
     
 }
