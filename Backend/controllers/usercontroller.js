@@ -21,29 +21,56 @@ let usercontroller = {
       res.status(500).json({ message: "internal server error", error });
     }
   },
+  // async createuser(req, res) {
+  //   try {
+  //     let data = new User({
+  //       name: req.body.name,
+  //       email: req.body.email.toLowerCase(),
+  //       password: await bcrypt.hash(req.body.password, 10),
+  //     });
+  //     let newdata = await data.save();
+  //     res.status(201).json(newdata);
+  //   }catch (error) {
+  //   console.log("Signup Error:", error);
+
+  //   res.status(500).json({
+  //     message: error.message,
+  //   });
+  // }
+  // }
   async createuser(req, res) {
     try {
+      console.log("BODY:", req.body);
+
+      if (!req.body) {
+        return res.status(400).json({
+          message: "Request body missing",
+        });
+      }
+
       let data = new User({
         name: req.body.name,
         email: req.body.email.toLowerCase(),
         password: await bcrypt.hash(req.body.password, 10),
       });
-      let newdata = await data.save();
-      res.status(201).json(newdata);
-    }catch (error) {
-    console.log("Signup Error:", error);
 
-    res.status(500).json({
-      message: error.message,
-    });
-  }
+      let newdata = await data.save();
+
+      res.status(201).json(newdata);
+    } catch (error) {
+      console.log("Signup Error:", error);
+
+      res.status(500).json({
+        message: error.message,
+      });
+    }
   },
   async loginuser(req, res) {
     try {
       let { email, password } = req.body;
 
       // Check Email
-      let user = await User.findOne({ email : email.toLowerCase() });
+      let user = await User.findOne({ email: email.toLowerCase() });
 
       if (!user) {
         return res.status(404).json({ message: "email not found.." });
@@ -59,7 +86,6 @@ let usercontroller = {
 
       res.status(200).json({ message: "login successfully..", user });
     } catch (error) {
-
       // console.log(error);
 
       res.status(500).json({
@@ -77,9 +103,10 @@ let usercontroller = {
 
       data.name = req.body.name || data.name;
       data.email = req.body.email || data.email;
-      data.password = (await bcrypt.hash(req.body.password, 10)) || data.password;
+      data.password =
+        (await bcrypt.hash(req.body.password, 10)) || data.password;
 
-      // Update Password  
+      // Update Password
       // if(req.body.password){
       //     data.password = await bcrypt.hash(req.body.password,10)
       // }
