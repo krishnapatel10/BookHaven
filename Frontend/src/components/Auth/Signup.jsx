@@ -31,7 +31,7 @@ export default function Signup() {
             formdata
          )
 
-         console.log(res.data)
+         console.log(res.data,api)
 
          alert("Signup Successfully")
 
