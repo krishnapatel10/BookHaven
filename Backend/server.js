@@ -8,12 +8,12 @@ let app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://book-haven-uw13.vercel.app"
+      "https://book-haven-uw13.vercel.app",
+      "https://book-haven-uw13-kw8e2n63k-krishna-patels-projects-02d8bc1d.vercel.app"
     ],
     credentials: true
   })
