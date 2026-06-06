@@ -22,7 +22,8 @@ export default function Bookcard() {
       try {
 
         let res = await axios.get(`${api}/api/book`)
-
+  
+        console.log("API:", api);
         setbooks(res.data)
 
       } catch (error) {

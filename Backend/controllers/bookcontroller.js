@@ -1,13 +1,29 @@
 import books from "../models/booksmodel.js";
 
 let booksController = {
+  // async getallbook(req, res) {
+  //   try {
+  //     let data = await books.find();
+  //      console.log("Books Found:", data.length);
+  //     res.status(200).json(data);
+  //   } catch (error) {
+  //     res.status(500).json({ message: "internal server error", error });
+  //   }
+  // },
   async getallbook(req, res) {
     try {
       let data = await books.find();
-       console.log("Books Found:", data.length);
+
+      console.log("Books Found:", data.length);
+
       res.status(200).json(data);
     } catch (error) {
-      res.status(500).json({ message: "internal server error", error });
+      console.log("GET BOOK ERROR:", error);
+
+      res.status(500).json({
+        message: "internal server error",
+        error: error.message,
+      });
     }
   },
   async getbookbyid(req, res) {
