@@ -4,6 +4,7 @@ export default function connectdb() {
 
    try {
      mongoose.connect(process.env.MONGODB_URL).then(()=>{
+      console.log("MONGODB_URL =", process.env.MONGODB_URL);
         console.log("Connected to mongodb...");
     }).catch((error)=>{
         console.log(error.message);
